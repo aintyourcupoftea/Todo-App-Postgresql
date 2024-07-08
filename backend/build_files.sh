@@ -1,14 +1,16 @@
+
+
 #!/bin/bash
 
-export PATH="/usr/local/bin:$PATH"
-source ~/.bash_profile
+# Create and activate the virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
 
-# build_files.sh
-echo "Installing Stuff...."
-python3 -m pip install -r requirements.txt
+# Install project dependencies
+pip install -r requirements.txt
 
-# make migrations
-python3.9 manage.py migrate 
-python3.9 manage.py collectstatic
+# Apply database migrations (within the virtual environment)
+python manage.py migrate
 
-
+# Collect static files 
+python manage.py collectstatic --no-input

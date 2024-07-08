@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # build_files.sh
-pip install -r requirements.txt
+echo "Installing Stuff...."
+python3 -m pip install -r requirements.txt
 
 # make migrations
 python3.9 manage.py migrate 
